@@ -1,0 +1,41 @@
+{
+    "name": "cleaniquecoders/nadi-laravel",
+    "description": "Handle Laravel Exception Events",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "CleaniqueCoders\\NadiLaravel\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Nasrul Hazim Bin Mohamad",
+            "email": "nasrulhazim.m@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.1",
+        "illuminate/support": "^10.0"
+    },
+    "require-dev": {
+        "laravel/pint": "dev-main",
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "^7.0",
+        "pestphp/pest": "^2.0",
+        "pestphp/pest-plugin-laravel": "^2.0",
+        "spatie/laravel-ignition": "^2.0"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
+        }
+    },
+    "scripts": {
+        "test" : "@php vendor/bin/pest"
+    }
+}
