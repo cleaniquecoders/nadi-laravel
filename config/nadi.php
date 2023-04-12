@@ -20,5 +20,5 @@ return [
         MessageLogged::class => [
             HandleExceptionEvent::class,
         ],
-    ]
+    ],
 ];

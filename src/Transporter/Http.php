@@ -25,6 +25,6 @@ class Http implements Contract
 
     public function url(string $endpoint)
     {
-        return rtrim(config('nadi.endpoint'), '/') . '/' . trim($endpoint, '/');
+        return rtrim(config('nadi.endpoint'), '/').'/'.trim($endpoint, '/');
     }
 }

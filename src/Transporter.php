@@ -7,17 +7,18 @@ use CleaniqueCoders\NadiLaravel\Transporter\Contract;
 class Transporter
 {
     protected string $driver;
+
     protected Contract $transporter;
 
     public function __construct()
     {
         $this->driver = '\\CleaniqueCoders\\NadiLaravel\\Transporter\\'.ucfirst(config('nadi.driver'));
 
-        if(! class_exists($this->driver)) {
+        if (! class_exists($this->driver)) {
             throw new \Exception("$this->driver did not exists");
         }
 
-        if(! in_array(Contract::class, class_implements($this->driver)) ) {
+        if (! in_array(Contract::class, class_implements($this->driver))) {
             throw new \Exception("$this->driver did not implement the \CleaniqueCoders\LaravelClient\Transpoert\Contract class.");
         }
 

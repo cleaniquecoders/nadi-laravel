@@ -2,13 +2,11 @@
 
 namespace CleaniqueCoders\NadiLaravel\Handler;
 
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Log\Events\MessageLogged;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Arr;
-use Laravel\Telescope\IncomingExceptionEntry;
 use Laravel\Telescope\ExceptionContext;
 use Laravel\Telescope\ExtractTags;
+use Laravel\Telescope\IncomingExceptionEntry;
 use Throwable;
 
 class HandleExceptionEvent
@@ -26,7 +24,7 @@ class HandleExceptionEvent
      */
     public function handle(MessageLogged $event): void
     {
-        if($this->shouldIgnore($event)) {
+        if ($this->shouldIgnore($event)) {
             return;
         }
 

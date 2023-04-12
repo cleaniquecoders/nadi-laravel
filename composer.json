@@ -36,6 +36,7 @@
         }
     },
     "scripts": {
-        "test" : "@php vendor/bin/pest"
+        "test" : "@php vendor/bin/pest",
+        "format" : "@php vendor/bin/pint"
     }
 }
