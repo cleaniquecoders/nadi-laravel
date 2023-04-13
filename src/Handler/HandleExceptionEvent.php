@@ -2,11 +2,11 @@
 
 namespace CleaniqueCoders\NadiLaravel\Handler;
 
+use CleaniqueCoders\NadiLaravel\Data\ExceptionEntry;
 use Illuminate\Log\Events\MessageLogged;
 use Illuminate\Support\Arr;
 use Laravel\Telescope\ExceptionContext;
 use Laravel\Telescope\ExtractTags;
-use Laravel\Telescope\IncomingExceptionEntry;
 use Throwable;
 
 class HandleExceptionEvent
@@ -34,19 +34,22 @@ class HandleExceptionEvent
             return Arr::only($item, ['file', 'line']);
         })->toArray();
 
-        $entry = IncomingExceptionEntry::make($exception, [
-            'class' => get_class($exception),
-            'file' => $exception->getFile(),
-            'line' => $exception->getLine(),
-            'message' => $exception->getMessage(),
-            'context' => transform(Arr::except($event->context, ['exception', 'telescope']), function ($context) {
-                return ! empty($context) ? $context : null;
-            }),
-            'trace' => $trace,
-            'line_preview' => ExceptionContext::get($exception),
-        ])->tags($this->tags($event));
-
-        app('nadi')->send($entry->toArray());
+        app('nadi')
+            ->send(
+                ExceptionEntry::make($exception, [
+                    'class' => get_class($exception),
+                    'file' => $exception->getFile(),
+                    'line' => $exception->getLine(),
+                    'message' => $exception->getMessage(),
+                    'context' => transform(Arr::except($event->context, ['exception', 'telescope']), function ($context) {
+                        return ! empty($context) ? $context : null;
+                    }),
+                    'trace' => $trace,
+                    'line_preview' => ExceptionContext::get($exception),
+                ])
+                ->tags($this->tags($event))
+                ->toArray()
+            );
     }
 
     /**

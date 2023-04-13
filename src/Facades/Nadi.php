@@ -1,16 +1,16 @@
 <?php
 
-namespace CleaniqueCoders\Nadi\Facades;
+namespace CleaniqueCoders\NadiLaravel\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \CleaniqueCoders\Nadi\Nadi
+ * @see \CleaniqueCoders\NadiLaravel\Nadi
  */
 class Nadi extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return \CleaniqueCoders\Nadi\Nadi::class;
+        return \CleaniqueCoders\NadiLaravel\Nadi::class;
     }
 }

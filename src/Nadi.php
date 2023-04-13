@@ -1,6 +1,6 @@
 <?php
 
-namespace CleaniqueCoders\Nadi;
+namespace CleaniqueCoders\NadiLaravel;
 
 class Nadi
 {
