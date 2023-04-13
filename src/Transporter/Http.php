@@ -12,7 +12,7 @@ class Http implements Contract
     public function __construct()
     {
         $this->client = Client::withHeaders([
-            'Accept' => 'application/vnd.nadi.app.'.config('nadi.version').'+json',
+            'Accept' => 'application/vnd.nadi.'.config('nadi.version').'+json',
             'Authorization' => 'Bearer '.config('nadi.key'),
             'Nadi-Token' => config('nadi.token'),
         ]);
