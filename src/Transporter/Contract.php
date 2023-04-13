@@ -4,5 +4,5 @@ namespace CleaniqueCoders\NadiLaravel\Transporter;
 
 interface Contract
 {
-    public function send(iterable $data);
+    public function send(array $data);
 }

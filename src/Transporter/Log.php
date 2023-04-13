@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\Log as Logger;
 
 class Log implements Contract
 {
-    public function send(iterable $data)
+    public function send(array $data)
     {
-        return Logger::channel('daily')->error('nadi.harvester', ['exception' => $data]);
+        return Logger::channel('daily')->error('nadi.log', $data);
     }
 }

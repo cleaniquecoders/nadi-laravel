@@ -19,11 +19,11 @@ class ExceptionEntry extends Entry
      * @param  \Throwable  $exception
      * @return void
      */
-    public function __construct($exception, array $content)
+    public function __construct($exception, $type, array $content)
     {
         $this->exception = $exception;
 
-        parent::__construct($content);
+        parent::__construct($content, $type);
     }
 
     /**

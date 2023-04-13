@@ -15,13 +15,6 @@ class Entry
     public $uuid;
 
     /**
-     * The entry's batch ID.
-     *
-     * @var string
-     */
-    public $batchId;
-
-    /**
      * The entry's type.
      *
      * @var string
@@ -69,15 +62,15 @@ class Entry
      * @param  string|null  $uuid
      * @return void
      */
-    public function __construct(array $content, $uuid = null)
+    public function __construct(array $content, $type, $uuid = null)
     {
         $this->uuid = $uuid ?: (string) Str::orderedUuid();
 
+        $this->type = $type;
+
         $this->recordedAt = now();
 
-        $this->content = array_merge($content, ['meta' => [
-            'metric' => Metric::getCurrentRequest(),
-        ]]);
+        $this->content = $content;
     }
 
     /**
@@ -89,18 +82,6 @@ class Entry
     public static function make(...$arguments)
     {
         return new static(...$arguments);
-    }
-
-    /**
-     * Assign the entry a given batch ID.
-     *
-     * @return $this
-     */
-    public function batchId(string $batchId)
-    {
-        $this->batchId = $batchId;
-
-        return $this;
     }
 
     /**
@@ -193,6 +174,11 @@ class Entry
         return $this->familyHash;
     }
 
+    public function getType()
+    {
+        return $this->type;
+    }
+
     /**
      * Get an array representation of the entry for storage.
      *
@@ -202,10 +188,10 @@ class Entry
     {
         return [
             'uuid' => $this->uuid,
-            'batch_id' => $this->batchId,
             'family_hash' => $this->familyHash(),
-            'type' => $this->type,
+            'type' => $this->getType(),
             'content' => $this->content,
+            'meta' => Metric::getCurrentRequest(),
             'created_at' => $this->recordedAt->toDateTimeString(),
         ];
     }

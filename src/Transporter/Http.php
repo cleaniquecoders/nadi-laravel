@@ -18,7 +18,7 @@ class Http implements Contract
         ]);
     }
 
-    public function send(iterable $data)
+    public function send(array $data)
     {
         return $this->client->post($this->url('report-exception'), $data);
     }
