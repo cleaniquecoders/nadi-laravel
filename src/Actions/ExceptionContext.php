@@ -10,7 +10,6 @@ class ExceptionContext
     /**
      * Get the exception code context for the given exception.
      *
-     * @param  \Throwable  $exception
      * @return array
      */
     public static function get(Throwable $exception)
@@ -22,7 +21,6 @@ class ExceptionContext
     /**
      * Get the exception code context when eval() failed.
      *
-     * @param  \Throwable  $exception
      * @return array|null
      */
     protected static function getEvalContext(Throwable $exception)
@@ -37,7 +35,6 @@ class ExceptionContext
     /**
      * Get the exception code context from a file.
      *
-     * @param  \Throwable  $exception
      * @return array
      */
     protected static function getFileContext(Throwable $exception)
