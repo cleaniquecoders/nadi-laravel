@@ -50,7 +50,6 @@ class ExtractTags
     /**
      * Determine the tags for the given array.
      *
-     * @param  array  $data
      * @return array
      */
     public static function fromArray(array $data)
@@ -93,7 +92,6 @@ class ExtractTags
     /**
      * Determine tags for the given job.
      *
-     * @param  array  $targets
      * @return array
      */
     protected static function explicitTags(array $targets)
@@ -128,7 +126,6 @@ class ExtractTags
     /**
      * Get the models from the given object.
      *
-     * @param  array  $targets
      * @return \Illuminate\Support\Collection
      */
     protected static function modelsFor(array $targets)
