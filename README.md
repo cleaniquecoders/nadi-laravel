@@ -1,3 +1,5 @@
+[![Test](https://github.com/cleaniquecoders/nadi-laravel/actions/workflows/run-tests.yml/badge.svg)](https://github.com/cleaniquecoders/nadi-laravel/actions/workflows/run-tests.yml) [![PHP Linting (Pint)](https://github.com/cleaniquecoders/nadi-laravel/actions/workflows/lint.yml/badge.svg)](https://github.com/cleaniquecoders/nadi-laravel/actions/workflows/lint.yml)
+
 # Nadi Laravel Client
 
 Nadi is a simple issue tracker for monitoring your application crashes. This package developed for Laravel framework.
