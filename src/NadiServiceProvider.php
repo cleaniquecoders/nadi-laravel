@@ -2,15 +2,21 @@
 
 namespace CleaniqueCoders\NadiLaravel;
 
-use Illuminate\Support\ServiceProvider;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\Commands\InstallCommand;
 
-class NadiServiceProvider extends ServiceProvider
+class NadiServiceProvider extends PackageServiceProvider
 {
-    /**
-     * Register services.
-     */
-    public function register(): void
+    public function configurePackage(Package $package): void
     {
+        $package
+            ->name('nadi')
+            ->hasConfigFile()
+            ->hasInstallCommand(function(InstallCommand $command) {
+                $command->publishConfigFile();
+            });
+
         if (! config('nadi.enabled')) {
             return;
         }
@@ -24,13 +30,5 @@ class NadiServiceProvider extends ServiceProvider
                 app()['events']->listen($event, $listener);
             }
         }
-    }
-
-    /**
-     * Bootstrap services.
-     */
-    public function boot(): void
-    {
-        //
     }
 }

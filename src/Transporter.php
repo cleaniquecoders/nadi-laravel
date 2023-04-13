@@ -19,7 +19,7 @@ class Transporter
         }
 
         if (! in_array(Contract::class, class_implements($this->driver))) {
-            throw new \Exception("$this->driver did not implement the \CleaniqueCoders\LaravelClient\Transpoert\Contract class.");
+            throw new \Exception("$this->driver did not implement the \CleaniqueCoders\NadiLaravel\Transpoert\Contract class.");
         }
 
         $this->transporter = new $this->driver;

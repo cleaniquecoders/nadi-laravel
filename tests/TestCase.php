@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace CleaniqueCoders\NadiLaravel\Tests;
 
 use PHPUnit\Framework\TestCase as BaseTestCase;
 

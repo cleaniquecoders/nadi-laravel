@@ -7,16 +7,21 @@
             "CleaniqueCoders\\NadiLaravel\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "CleaniqueCoders\\NadiLaravel\\Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "Nasrul Hazim Bin Mohamad",
             "email": "nasrulhazim.m@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
         "php": "^8.1",
-        "illuminate/support": "^10.0"
+        "illuminate/support": "^10.0",
+        "spatie/laravel-package-tools": "dev-main"
     },
     "require-dev": {
         "laravel/pint": "dev-main",
@@ -38,5 +43,17 @@
     "scripts": {
         "test" : "@php vendor/bin/pest",
         "format" : "@php vendor/bin/pint"
-    }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "CleaniqueCoders\\NadiLaravel\\NadiServiceProvider"
+            ],
+            "aliases": {
+                "Nadi": "CleaniqueCoders\\NadiLaravel\\Facades\\Nadi"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
