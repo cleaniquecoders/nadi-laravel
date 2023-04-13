@@ -2,9 +2,9 @@
 
 namespace CleaniqueCoders\NadiLaravel;
 
-use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
+use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class NadiServiceProvider extends PackageServiceProvider
 {
@@ -13,7 +13,7 @@ class NadiServiceProvider extends PackageServiceProvider
         $package
             ->name('nadi')
             ->hasConfigFile()
-            ->hasInstallCommand(function(InstallCommand $command) {
+            ->hasInstallCommand(function (InstallCommand $command) {
                 $command->publishConfigFile();
             });
 
