@@ -203,7 +203,7 @@ class Entry
         return [
             'uuid' => $this->uuid,
             'batch_id' => $this->batchId,
-            'family_hash' => $this->familyHash,
+            'family_hash' => $this->familyHash(),
             'type' => $this->type,
             'content' => $this->content,
             'created_at' => $this->recordedAt->toDateTimeString(),
