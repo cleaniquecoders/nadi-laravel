@@ -27,7 +27,7 @@ class HandleQueryExecutedEvent
         $time = $event->time;
         $slow = $time > config('nadi.query.slow-threshold');
 
-        if(! $slow) {
+        if (! $slow) {
             return;
         }
 
