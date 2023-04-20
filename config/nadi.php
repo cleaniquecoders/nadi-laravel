@@ -26,4 +26,8 @@ return [
             HandleQueryExecutedEvent::class,
         ],
     ],
+
+    'query' => [
+        'slow-threshold' => env('NADI_QUERY_SLOW_THRESHOLD', 500), // in miliseconds.
+    ]
 ];

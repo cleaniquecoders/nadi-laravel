@@ -25,6 +25,12 @@ class HandleQueryExecutedEvent
     public function handle(QueryExecuted $event): void
     {
         $time = $event->time;
+        $slow = $time > config('nadi.query.slow-threshold');
+
+        if(! $slow) {
+            return;
+        }
+
         if ($caller = $this->getCallerFromStackTrace()) {
             app('nadi')
                 ->send(
@@ -34,7 +40,7 @@ class HandleQueryExecutedEvent
                             'bindings' => [],
                             'sql' => $this->replaceBindings($event),
                             'time' => number_format($time, 2, '.', ''),
-                            'slow' => isset($this->options['slow']) && $time >= $this->options['slow'],
+                            'slow' => true,
                             'file' => $caller['file'],
                             'line' => $caller['line'],
                         ])
