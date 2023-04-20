@@ -3,7 +3,9 @@
 namespace CleaniqueCoders\NadiLaravel\Data;
 
 use CleaniqueCoders\NadiLaravel\Collector\Metric;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Throwable;
 
 class Entry
 {
@@ -62,7 +64,7 @@ class Entry
      * @param  string|null  $uuid
      * @return void
      */
-    public function __construct(array $content, $type, $uuid = null)
+    public function __construct($type, array $content, $uuid = null)
     {
         $this->uuid = $uuid ?: (string) Str::orderedUuid();
 
@@ -71,6 +73,14 @@ class Entry
         $this->recordedAt = now();
 
         $this->content = $content;
+
+        try {
+            if (Auth::hasResolvedGuards() && Auth::hasUser()) {
+                $this->user(Auth::user());
+            }
+        } catch (Throwable $e) {
+            // Do nothing.
+        }
     }
 
     /**

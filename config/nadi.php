@@ -1,6 +1,8 @@
 <?php
 
 use CleaniqueCoders\NadiLaravel\Handler\HandleExceptionEvent;
+use CleaniqueCoders\NadiLaravel\Handler\HandleQueryExecutedEvent;
+use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Log\Events\MessageLogged;
 
 return [
@@ -19,6 +21,9 @@ return [
     'observe' => [
         MessageLogged::class => [
             HandleExceptionEvent::class,
+        ],
+        QueryExecuted::class => [
+            HandleQueryExecutedEvent::class,
         ],
     ],
 ];

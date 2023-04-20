@@ -20,7 +20,7 @@ class Http implements Contract
 
     public function send(array $data)
     {
-        return $this->client->post($this->url('report-exception'), $data);
+        return $this->client->post($this->url('record'), $data);
     }
 
     public function url(string $endpoint)

@@ -23,7 +23,7 @@ class ExceptionEntry extends Entry
     {
         $this->exception = $exception;
 
-        parent::__construct($content, $type);
+        parent::__construct($type, $content);
     }
 
     /**
