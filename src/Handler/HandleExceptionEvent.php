@@ -52,8 +52,8 @@ class HandleExceptionEvent
                         'line_preview' => ExceptionContext::get($exception),
                     ]
                 )
-                ->tags($this->tags($event))
-                ->toArray()
+                    ->tags($this->tags($event))
+                    ->toArray()
             );
     }
 

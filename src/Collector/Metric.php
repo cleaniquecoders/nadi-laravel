@@ -21,15 +21,15 @@ class Metric
             'http.query' => request()->getQueryString(),
             'http.uri' => str_replace(request()->root(), '', request()->fullUrl()) ?: '/',
             'http.headers' => collect(request()->headers->all())
-                            ->map(function ($header) {
-                                return $header[0];
-                            })
-                            ->reject(function ($header, $key) {
-                                return in_array($key, [
-                                    'authorization', config('nadi.header-key'), 'nadi-key',
-                                ]);
-                            })
-                            ->toArray(),
+                ->map(function ($header) {
+                    return $header[0];
+                })
+                ->reject(function ($header, $key) {
+                    return in_array($key, [
+                        'authorization', config('nadi.header-key'), 'nadi-key',
+                    ]);
+                })
+                ->toArray(),
             'net.host.name' => request()->getHost(),
             'net.host.port' => request()->getPort(),
             'net.protocol.name' => app()->runningInConsole() ? 'CLI' : 'HTTP',
