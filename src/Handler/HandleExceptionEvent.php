@@ -13,14 +13,6 @@ use Throwable;
 class HandleExceptionEvent
 {
     /**
-     * Create the event listener.
-     */
-    public function __construct()
-    {
-        //
-    }
-
-    /**
      * Handle the event.
      */
     public function handle(MessageLogged $event): void
