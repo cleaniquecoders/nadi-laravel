@@ -7,4 +7,6 @@ class Type
     public const EXCEPTION = 'Exception';
 
     public const QUERY = 'Query';
+
+    public const QUEUE = 'Queue';
 }

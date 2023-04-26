@@ -1,9 +1,11 @@
 <?php
 
 use CleaniqueCoders\NadiLaravel\Handler\HandleExceptionEvent;
+use CleaniqueCoders\NadiLaravel\Handler\HandleFailedJobEvent;
 use CleaniqueCoders\NadiLaravel\Handler\HandleQueryExecutedEvent;
 use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Log\Events\MessageLogged;
+use Illuminate\Queue\Events\JobFailed;
 
 return [
     'endpoint' => env('NADI_ENDPOINT', 'https://127.0.0.1:8000/api'),
@@ -24,6 +26,9 @@ return [
         ],
         QueryExecuted::class => [
             HandleQueryExecutedEvent::class,
+        ],
+        JobFailed::class => [
+            HandleFailedJobEvent::class,
         ],
     ],
 
