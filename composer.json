@@ -23,7 +23,7 @@
         "illuminate/contracts": "*",
         "illuminate/routing": "*",
         "illuminate/support": "^10.0",
-        "spatie/laravel-package-tools": "dev-main"
+        "spatie/laravel-package-tools": "^1.0"
     },
     "require-dev": {
         "laravel/pint": "dev-main",
@@ -56,6 +56,6 @@
             }
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true
 }
