@@ -9,7 +9,6 @@ on:
 jobs:
   phpstan:
     name: phpstan
-    if: ${{ !env.ACT }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
