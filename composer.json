@@ -26,11 +26,10 @@
         "spatie/laravel-package-tools": "^1.0"
     },
     "require-dev": {
-        "laravel/pint": "dev-main",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
-        "pestphp/pest": "^2.0",
-        "pestphp/pest-plugin-laravel": "^2.0",
+        "orchestra/testbench": "^8.5",
+        "phpunit/phpunit": "^8.0 || ^9.00 || ^10.1",
         "spatie/laravel-ignition": "^2.0"
     },
     "config": {
@@ -38,12 +37,11 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
-            "pestphp/pest-plugin": true,
             "php-http/discovery": true
         }
     },
     "scripts": {
-        "test" : "@php vendor/bin/pest",
+        "test" : "@php vendor/bin/phpunit",
         "format" : "@php vendor/bin/pint"
     },
     "extra": {
