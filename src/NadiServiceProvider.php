@@ -2,20 +2,35 @@
 
 namespace CleaniqueCoders\NadiLaravel;
 
-use Spatie\LaravelPackageTools\Commands\InstallCommand;
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
+use CleaniqueCoders\NadiLaravel\Console\Commmands\InstallCommand;
+use CleaniqueCoders\NadiLaravel\Console\Commmands\TestCommand;
+use CleaniqueCoders\NadiLaravel\Console\Commmands\VerifyCommand;
+use Illuminate\Support\ServiceProvider;
 
-class NadiServiceProvider extends PackageServiceProvider
+class NadiServiceProvider extends ServiceProvider
 {
-    public function configurePackage(Package $package): void
+    /**
+     * Register bindings in the container.
+     *
+     * @return void
+     */
+    public function register()
     {
-        $package
-            ->name('nadi')
-            ->hasConfigFile()
-            ->hasInstallCommand(function (InstallCommand $command) {
-                $command->publishConfigFile();
-            });
+        $this->publishes([
+            __DIR__.'/../config/nadi.php' => config_path('nadi.php'),
+        ], 'nadi-config');
+
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/nadi.php', 'nadi'
+        );
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                InstallCommand::class,
+                // TestCommand::class, // @todo
+                // VerifyCommand::class, // @todo
+            ]);
+        }
 
         if (! config('nadi.enabled')) {
             return;
@@ -30,5 +45,6 @@ class NadiServiceProvider extends PackageServiceProvider
                 app()['events']->listen($event, $listener);
             }
         }
+
     }
 }
