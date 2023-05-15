@@ -6,6 +6,7 @@ on:
 jobs:
   phplint:
     runs-on: ubuntu-latest
+    if: ${{ !env.ACT }}
     steps:
       - uses: actions/checkout@v3
         with:

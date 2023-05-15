@@ -51,6 +51,16 @@ jobs:
           echo "::add-matcher::${{ runner.tool_cache }}/php.json"
           echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
+      - name: Remove unused package if PHP 7.4
+        if: matrix.php == 7.4
+        run: |
+          composer remove laravel/pint pestphp/pest spatie/laravel-ignition
+
+      - name: Remove unused package if PHP 8.0
+        if: matrix.php == 8.0
+        run: |
+            composer remove laravel/pint pestphp/pest
+
       - name: Install dependencies
         run: |
           composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "nesbot/carbon:${{ matrix.carbon }}" --no-interaction --no-update
