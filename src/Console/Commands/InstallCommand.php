@@ -1,6 +1,6 @@
 <?php
 
-namespace CleaniqueCoders\NadiLaravel\Console\Commmands;
+namespace CleaniqueCoders\NadiLaravel\Console\Commands;
 
 use Illuminate\Console\Command;
 
@@ -11,7 +11,7 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'nadi:install';
+    protected $signature = 'nadi:install {--force}';
 
     /**
      * The console command description.
@@ -22,7 +22,10 @@ class InstallCommand extends Command
 
     public function handle()
     {
-        $this->call('vendor:publish --tag=nadi-config');
+        $this->call('vendor:publish', [
+            '--tag' => 'nadi-config',
+            '--force' => $this->option('force') ?? false,
+        ]);
         $this->info('Successfully installed Nadi');
     }
 }

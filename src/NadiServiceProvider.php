@@ -2,9 +2,9 @@
 
 namespace CleaniqueCoders\NadiLaravel;
 
-use CleaniqueCoders\NadiLaravel\Console\Commmands\InstallCommand;
-use CleaniqueCoders\NadiLaravel\Console\Commmands\TestCommand;
-use CleaniqueCoders\NadiLaravel\Console\Commmands\VerifyCommand;
+use CleaniqueCoders\NadiLaravel\Console\Commands\InstallCommand;
+use CleaniqueCoders\NadiLaravel\Console\Commands\TestCommand;
+use CleaniqueCoders\NadiLaravel\Console\Commands\VerifyCommand;
 use Illuminate\Support\ServiceProvider;
 
 class NadiServiceProvider extends ServiceProvider
