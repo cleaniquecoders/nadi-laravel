@@ -1,4 +1,6 @@
-[![Test](https://github.com/cleaniquecoders/nadi-laravel/actions/workflows/run-tests.yml/badge.svg)](https://github.com/cleaniquecoders/nadi-laravel/actions/workflows/run-tests.yml) [![PHP Linting (Pint)](https://github.com/cleaniquecoders/nadi-laravel/actions/workflows/lint.yml/badge.svg)](https://github.com/cleaniquecoders/nadi-laravel/actions/workflows/lint.yml)
+<p align="center">
+<a href="https://github.com/cleaniquecoders/nadi-laravel/actions"><img src="https://github.com/cleaniquecoders/nadi-laravel/actions/workflows/run-tests.yml/badge.svg" alt="Build Status">
+</p>
 
 # Nadi Laravel Client
 
