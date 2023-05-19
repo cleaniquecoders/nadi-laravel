@@ -2,6 +2,7 @@
 
 namespace CleaniqueCoders\NadiLaravel\Collector;
 
+use CleaniqueCoders\NadiLaravel\Support\Arr;
 use hisorange\BrowserDetect\Parser as Browser;
 use Illuminate\Support\Str;
 
@@ -9,7 +10,7 @@ class Metric
 {
     public static function getCurrentRequest(): array
     {
-        return array_merge(
+        return Arr::undot(array_merge(
             self::getOs(),
             self::getApp(),
             self::getNetwork(),
@@ -18,7 +19,7 @@ class Metric
             self::getFramework(),
             self::getHttp(),
             self::getSystem(),
-        );
+        ));
     }
 
     public static function getOs(): array
@@ -67,12 +68,12 @@ class Metric
             unset($browser[$key]);
             $key = str_replace(['browser', 'is'], '', $key);
             $key = Str::snake($key, '.');
-            $key = str_replace('i.e', 'ie', $key);
+            $key = str_replace(['i.e', 'in.app', 'user.agent', 'mobile.grade'], ['ie', 'in-app', 'user-agent', 'mobile-grade'], $key);
             $browser[$key] = $value;
         }
 
         return [
-            'browser' => $browser,
+            'browser' => Arr::undot($browser),
         ];
     }
 
@@ -96,7 +97,7 @@ class Metric
             'http.status_code' => http_response_code(),
             'http.query' => request()->getQueryString(),
             'http.uri' => str_replace(request()->root(), '', request()->fullUrl()) ?: '/',
-            'http.headers' => collect(request()->headers->all())
+            'http.headers' => Arr::undot(collect(request()->headers->all())
                 ->map(function ($header) {
                     return $header[0];
                 })
@@ -105,7 +106,7 @@ class Metric
                         'authorization', config('nadi.header-key'), 'nadi-key',
                     ]);
                 })
-                ->toArray(),
+                ->toArray()),
         ];
     }
 
