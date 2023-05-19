@@ -38,7 +38,7 @@ return [
 
     'logger' => [
         'driver' => 'daily',
-        'path' => storage_path('nadi.log'),
+        'path' => storage_path('logs/nadi.log'),
         'level' => env('LOG_LEVEL', 'debug'),
         'days' => 14,
     ],

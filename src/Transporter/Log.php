@@ -21,13 +21,13 @@ class Log implements Contract
     {
         $this->log('nadi.verify');
 
-        $path = file_exists(storage_path('logs/nadi-'.date('Y-m-d').'.log'));
+        $path = storage_path('logs/nadi-'.date('Y-m-d').'.log');
         $content = file_get_contents($path);
 
-        return $path && Str::of($content)->contains('nadi.verify');
+        return file_exists($path) && Str::of($content)->contains('nadi.verify');
     }
 
-    public function log($key, $data = null)
+    public function log($key, $data = [])
     {
         Logger::channel('nadi')->error($key, $data);
     }
