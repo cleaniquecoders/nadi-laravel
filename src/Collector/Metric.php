@@ -65,7 +65,9 @@ class Metric
         $browser = (new Browser(null, request()))->detect()->toArray();
         foreach ($browser as $key => $value) {
             unset($browser[$key]);
-            $key = Str::of($key)->replace(['browser', 'is'], '')->snake('.')->replace(['i.e'], ['ie'])->toString();
+            $key = str_replace(['browser', 'is'], '', $key);
+            $key = Str::snake($key, '.');
+            $key = str_replace('i.e', 'ie', $key);
             $browser[$key] = $value;
         }
 

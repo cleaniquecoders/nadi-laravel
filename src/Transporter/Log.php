@@ -3,7 +3,6 @@
 namespace CleaniqueCoders\NadiLaravel\Transporter;
 
 use Illuminate\Support\Facades\Log as Logger;
-use Illuminate\Support\Str;
 
 class Log implements Contract
 {
@@ -24,7 +23,7 @@ class Log implements Contract
         $path = storage_path('logs/nadi-'.date('Y-m-d').'.log');
         $content = file_get_contents($path);
 
-        return file_exists($path) && Str::of($content)->contains('nadi.verify');
+        return file_exists($path) && str_contains($content, 'nadi.verify');
     }
 
     public function log($key, $data = [])
