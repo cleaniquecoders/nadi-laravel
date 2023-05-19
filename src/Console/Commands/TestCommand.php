@@ -22,6 +22,8 @@ class TestCommand extends Command
 
     public function handle()
     {
-
+        $this->info('Connectivity to Nadi API is: '.(
+            app('nadi')->test() ? 'Active' : 'Inactive')
+        );
     }
 }

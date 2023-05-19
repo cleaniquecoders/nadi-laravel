@@ -34,4 +34,14 @@ class Transporter
     {
         return $this->transporter->send($data);
     }
+
+    public function test()
+    {
+        return $this->transporter->test();
+    }
+
+    public function verify()
+    {
+        return $this->transporter->verify();
+    }
 }

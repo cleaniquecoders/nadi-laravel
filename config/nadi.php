@@ -35,4 +35,11 @@ return [
     'query' => [
         'slow-threshold' => env('NADI_QUERY_SLOW_THRESHOLD', 500), // in miliseconds.
     ],
+
+    'logger' => [
+        'driver' => 'daily',
+        'path' => storage_path('nadi.log'),
+        'level' => env('LOG_LEVEL', 'debug'),
+        'days' => 14,
+    ],
 ];

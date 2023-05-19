@@ -18,6 +18,20 @@ class Http implements Contract
         ]);
     }
 
+    public function test()
+    {
+        $response = $this->client->post($this->url('test'));
+
+        return $response->status() == 200;
+    }
+
+    public function verify()
+    {
+        $response = $this->client->post($this->url('verify'));
+
+        return $response->status() == 200;
+    }
+
     public function send(array $data)
     {
         return $this->client->post($this->url('record'), $data);

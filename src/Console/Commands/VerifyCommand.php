@@ -22,6 +22,8 @@ class VerifyCommand extends Command
 
     public function handle()
     {
-
+        $this->info('Application Verification Status: '.(
+            app('nadi')->verify() ? 'OK' : 'Failed')
+        );
     }
 }
