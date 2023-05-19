@@ -3,6 +3,7 @@
 namespace CleaniqueCoders\NadiLaravel\Transporter;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\RequestOptions;
 
 class Http implements Contract
 {
@@ -15,6 +16,7 @@ class Http implements Contract
                 'Accept' => 'application/vnd.nadi.'.config('nadi.version').'+json',
                 'Authorization' => 'Bearer '.config('nadi.key'),
                 'Nadi-Token' => config('nadi.token'),
+                'Content-Type' => 'application/json',
             ],
         ]);
     }
@@ -35,7 +37,7 @@ class Http implements Contract
 
     public function send(array $data)
     {
-        return $this->client->post($this->url('record'), $data);
+        return $this->client->post($this->url('record'), [RequestOptions::JSON => $data]);
     }
 
     public function url(string $endpoint)
