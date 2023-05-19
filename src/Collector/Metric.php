@@ -4,6 +4,7 @@ namespace CleaniqueCoders\NadiLaravel\Collector;
 
 use hisorange\BrowserDetect\Parser as Browser;
 use Illuminate\Support\Str;
+
 class Metric
 {
     public static function getCurrentRequest(): array
@@ -64,9 +65,10 @@ class Metric
         $browser = (new Browser(null, request()))->detect()->toArray();
         foreach ($browser as $key => $value) {
             unset($browser[$key]);
-            $key = Str::of($key)->replace(['browser', 'is'], '')->snake('.')->replace(['i.e'],['ie'])->toString();
+            $key = Str::of($key)->replace(['browser', 'is'], '')->snake('.')->replace(['i.e'], ['ie'])->toString();
             $browser[$key] = $value;
         }
+
         return [
             'browser' => $browser,
         ];
