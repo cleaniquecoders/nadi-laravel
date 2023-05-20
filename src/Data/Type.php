@@ -9,4 +9,6 @@ class Type
     public const QUERY = 'Query';
 
     public const QUEUE = 'Queue';
+
+    public const HTTP = 'Http';
 }
