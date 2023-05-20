@@ -29,7 +29,7 @@ class HandleQueryExecutedEvent
                     Entry::make(
                         Type::QUERY, [
                             'connection' => $event->connectionName,
-                            'bindings' => [],
+                            'bindings' => $event->bindings,
                             'sql' => $this->replaceBindings($event),
                             'time' => number_format($time, 2, '.', ''),
                             'slow' => true,
