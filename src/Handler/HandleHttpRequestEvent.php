@@ -20,7 +20,6 @@ class HandleHttpRequestEvent
     /**
      * Record an incoming HTTP request.
      *
-     * @param  \Illuminate\Foundation\Http\Events\RequestHandled  $event
      * @return void
      */
     public function handle(RequestHandled $event)
@@ -30,7 +29,7 @@ class HandleHttpRequestEvent
         $status_code = $event->response->getStatusCode();
         $method = $event->request->method();
 
-        if(in_array($status_code, config('nadi.http.ignored_status_codes'))) {
+        if (in_array($status_code, config('nadi.http.ignored_status_codes'))) {
             return;
         }
 
@@ -66,7 +65,7 @@ class HandleHttpRequestEvent
         })->toArray();
 
         return $this->hideParameters($headers,
-        config('nadi.http.hidden_request_headers')
+            config('nadi.http.hidden_request_headers')
         );
     }
 
@@ -104,7 +103,6 @@ class HandleHttpRequestEvent
     /**
      * Extract the session variables from the given request.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     private function sessionVariables(Request $request)
@@ -115,7 +113,6 @@ class HandleHttpRequestEvent
     /**
      * Extract the input from the given request.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     private function input(Request $request)
@@ -135,7 +132,6 @@ class HandleHttpRequestEvent
     /**
      * Format the given response object.
      *
-     * @param  \Symfony\Component\HttpFoundation\Response  $response
      * @return array|string
      */
     protected function response(Response $response)
