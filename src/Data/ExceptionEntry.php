@@ -2,28 +2,26 @@
 
 namespace CleaniqueCoders\NadiLaravel\Data;
 
+use CleaniqueCoders\Nadi\Data\ExceptionEntry as DataExceptionEntry;
+use CleaniqueCoders\NadiLaravel\Concerns\InteractsWithMetric;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 
-class ExceptionEntry extends Entry
+class ExceptionEntry extends DataExceptionEntry
 {
-    /**
-     * The underlying exception instance.
-     *
-     * @var \Throwable
-     */
-    public $exception;
+    use InteractsWithMetric;
 
     /**
      * Create a new incoming entry instance.
      *
      * @param  \Throwable  $exception
+     * @param  string  $type
      * @return void
      */
     public function __construct($exception, $type, array $content)
     {
-        $this->exception = $exception;
+        parent::__construct($exception, $type, $content);
 
-        parent::__construct($type, $content);
+        $this->registerMetrics();
     }
 
     /**
@@ -37,25 +35,5 @@ class ExceptionEntry extends Entry
 
         return method_exists($handler, 'shouldReport')
                 ? $handler->shouldReport($this->exception) : true;
-    }
-
-    /**
-     * Determine if the incoming entry is an exception.
-     *
-     * @return bool
-     */
-    public function isException()
-    {
-        return true;
-    }
-
-    /**
-     * Calculate the family look-up hash for the incoming entry.
-     *
-     * @return string
-     */
-    public function familyHash()
-    {
-        return md5($this->content['file'].$this->content['line']);
     }
 }

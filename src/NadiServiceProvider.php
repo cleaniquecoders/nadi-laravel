@@ -24,9 +24,6 @@ class NadiServiceProvider extends ServiceProvider
             __DIR__.'/../config/nadi.php', 'nadi'
         );
 
-        config()
-            ->set('logging.channels.nadi', config('nadi.logger'));
-
         if ($this->app->runningInConsole()) {
             $this->commands([
                 InstallCommand::class,

@@ -22,8 +22,8 @@ return [
             'key' => env('NADI_KEY'),
             'token' => env('NADI_TOKEN'),
             'version' => env('NADI_VERSION', 'v1'),
-            'endpoint' => env('NADI_ENDPOINT', 'https://nadi.cleaniquecoders.com/api')
-        ]
+            'endpoint' => env('NADI_ENDPOINT', 'https://nadi.cleaniquecoders.com/api'),
+        ],
     ],
 
     'observe' => [
@@ -61,12 +61,5 @@ return [
             200, 201, 202, 203, 204, 205, 206, 207,
             300, 302, 303, 304, 305, 306, 307, 308,
         ],
-    ],
-
-    'logger' => [
-        'driver' => 'daily',
-        'path' => storage_path('logs/nadi.log'),
-        'level' => env('LOG_LEVEL', 'debug'),
-        'days' => 14,
     ],
 ];
