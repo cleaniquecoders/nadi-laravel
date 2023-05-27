@@ -10,17 +10,21 @@ use Illuminate\Log\Events\MessageLogged;
 use Illuminate\Queue\Events\JobFailed;
 
 return [
-    'endpoint' => env('NADI_ENDPOINT', 'https://nadi.cleaniquecoders.com/api'),
-
     'enabled' => env('NADI_ENABLED', true),
 
     'driver' => env('NADI_DRIVER', 'log'),
 
-    'key' => env('NADI_KEY'),
-
-    'token' => env('NADI_TOKEN'),
-
-    'version' => env('NADI_VERSION', 'v1'),
+    'connections' => [
+        'log' => [
+            'path' => storage_path('logs/'),
+        ],
+        'http' => [
+            'key' => env('NADI_KEY'),
+            'token' => env('NADI_TOKEN'),
+            'version' => env('NADI_VERSION', 'v1'),
+            'endpoint' => env('NADI_ENDPOINT', 'https://nadi.cleaniquecoders.com/api')
+        ]
+    ],
 
     'observe' => [
         MessageLogged::class => [
