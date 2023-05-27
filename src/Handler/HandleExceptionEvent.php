@@ -2,10 +2,10 @@
 
 namespace CleaniqueCoders\NadiLaravel\Handler;
 
+use CleaniqueCoders\Nadi\Data\Type;
 use CleaniqueCoders\NadiLaravel\Actions\ExceptionContext;
 use CleaniqueCoders\NadiLaravel\Actions\ExtractTags;
 use CleaniqueCoders\NadiLaravel\Data\ExceptionEntry;
-use CleaniqueCoders\NadiLaravel\Data\Type;
 use Illuminate\Log\Events\MessageLogged;
 use Illuminate\Support\Arr;
 use Throwable;

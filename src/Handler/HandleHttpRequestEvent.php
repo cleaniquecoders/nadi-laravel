@@ -2,9 +2,9 @@
 
 namespace CleaniqueCoders\NadiLaravel\Handler;
 
+use CleaniqueCoders\Nadi\Data\Type;
 use CleaniqueCoders\NadiLaravel\Actions\FormatModel;
 use CleaniqueCoders\NadiLaravel\Data\Entry;
-use CleaniqueCoders\NadiLaravel\Data\Type;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Http\Events\RequestHandled;
 use Illuminate\Http\Request;

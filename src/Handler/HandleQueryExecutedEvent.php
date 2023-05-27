@@ -2,9 +2,9 @@
 
 namespace CleaniqueCoders\NadiLaravel\Handler;
 
+use CleaniqueCoders\Nadi\Data\Type;
 use CleaniqueCoders\NadiLaravel\Concerns\FetchesStackTrace;
 use CleaniqueCoders\NadiLaravel\Data\Entry;
-use CleaniqueCoders\NadiLaravel\Data\Type;
 use Illuminate\Database\Events\QueryExecuted;
 
 class HandleQueryExecutedEvent

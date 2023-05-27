@@ -2,11 +2,11 @@
 
 namespace CleaniqueCoders\NadiLaravel\Handler;
 
+use CleaniqueCoders\Nadi\Data\Type;
 use CleaniqueCoders\NadiLaravel\Actions\ExceptionContext;
 use CleaniqueCoders\NadiLaravel\Actions\ExtractProperties;
 use CleaniqueCoders\NadiLaravel\Actions\ExtractTags;
 use CleaniqueCoders\NadiLaravel\Data\Entry;
-use CleaniqueCoders\NadiLaravel\Data\Type;
 use Illuminate\Encryption\Encrypter;
 use Illuminate\Queue\Events\JobFailed;
 use Illuminate\Support\Facades\Log;
