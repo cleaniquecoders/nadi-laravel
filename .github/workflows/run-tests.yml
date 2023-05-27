@@ -20,18 +20,28 @@ jobs:
           - laravel: 10.*
             testbench: 8.*
             carbon: ^2.63
+            ramsey: ^4.7
+            phpunit: ^10.1
           - laravel: 9.*
             testbench: ^7.24
             carbon: ^2.62.1
+            ramsey: ^4.7
+            phpunit: ^9.0
           - laravel: 8.*
             testbench: ^6.27
             carbon: ^2.53.1
+            ramsey: ^4.7
+            phpunit: ^8.0
           - laravel: 7.*
             testbench: ^5.8
             carbon: ^2.31
+            ramsey: ^3.0
+            phpunit: ^8.0
           - laravel: 6.*
             testbench: 4.*
             carbon: ^2.31
+            ramsey: ^3.0
+            phpunit: ^8.0
         exclude:
           - laravel: 10.*
             php: 8.0
@@ -43,6 +53,8 @@ jobs:
             php: 8.2
           - laravel: 8.*
             php: 8.1
+          - laravel: 8.*
+            php: 7.4
           - laravel: 7.*
             php: 8.2
           - laravel: 7.*
@@ -74,7 +86,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "nesbot/carbon:${{ matrix.carbon }}" --no-interaction --no-update
+          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "nesbot/carbon:${{ matrix.carbon }}" "ramsey/uuid:${{ matrix.ramsey }}" --no-interaction --no-update
+          composer require "phpunit/phpunit:${{ matrix.phpunit }}" --no-interaction --no-update --dev
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: List Installed Dependencies
