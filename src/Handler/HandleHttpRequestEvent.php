@@ -28,6 +28,7 @@ class HandleHttpRequestEvent
         $uri = str_replace($event->request->root(), '', $event->request->fullUrl()) ?: '/';
         $status_code = $event->response->getStatusCode();
         $method = $event->request->method();
+        $title = "$uri returned HTTP Status Code $status_code";
 
         if (in_array($status_code, config('nadi.http.ignored_status_codes'))) {
             return;
@@ -35,7 +36,7 @@ class HandleHttpRequestEvent
 
         app('nadi')->send(Entry::make(
             Type::HTTP, [
-                'title' => "$uri returned HTTP Status Code $status_code",
+                'title' => $title,
                 'description' => "$uri for $method request returned HTTP Status Code $status_code",
                 'uri' => $uri,
                 'method' => $method,
@@ -49,6 +50,8 @@ class HandleHttpRequestEvent
                 'duration' => $startTime ? floor((microtime(true) - $startTime) * 1000) : null,
                 'memory' => round(memory_get_peak_usage(true) / 1024 / 1025, 1),
             ]
+        )->withFamilyHash(
+            md5($method.$status_code.$event->request->fullUrl())
         )->toArray());
     }
 
