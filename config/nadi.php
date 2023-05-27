@@ -3,10 +3,12 @@
 use CleaniqueCoders\NadiLaravel\Handler\HandleExceptionEvent;
 use CleaniqueCoders\NadiLaravel\Handler\HandleFailedJobEvent;
 use CleaniqueCoders\NadiLaravel\Handler\HandleHttpRequestEvent;
+use CleaniqueCoders\NadiLaravel\Handler\HandleNotificationFailedEvent;
 use CleaniqueCoders\NadiLaravel\Handler\HandleQueryExecutedEvent;
 use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Foundation\Http\Events\RequestHandled;
 use Illuminate\Log\Events\MessageLogged;
+use Illuminate\Notifications\Events\NotificationFailed;
 use Illuminate\Queue\Events\JobFailed;
 
 return [
@@ -38,6 +40,9 @@ return [
         ],
         RequestHandled::class => [
             HandleHttpRequestEvent::class,
+        ],
+        NotificationFailed::class => [
+            HandleNotificationFailedEvent::class,
         ],
     ],
 
