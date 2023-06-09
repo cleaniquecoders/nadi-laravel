@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use RuntimeException;
 
-class HandleFailedJobEvent
+class HandleFailedJobEvent extends Base
 {
     /**
      * Handle the event.
@@ -43,7 +43,7 @@ class HandleFailedJobEvent
             $this->data($payload)
         );
 
-        $data = Entry::make(
+        $this->send(Entry::make(
             Type::QUEUE, [
                 'data' => $content,
                 'status' => 'failed',
@@ -57,9 +57,7 @@ class HandleFailedJobEvent
             ])
             ->tags(array_merge($this->tags($payload), ['failed']))
             ->withFamilyHash(data_get($content, 'data.batchId', null))
-            ->toArray();
-
-        app('nadi')->send($data);
+            ->toArray());
     }
 
     /**

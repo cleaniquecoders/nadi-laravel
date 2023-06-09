@@ -15,7 +15,7 @@ use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
-class HandleHttpRequestEvent
+class HandleHttpRequestEvent extends Base
 {
     /**
      * Record an incoming HTTP request.
@@ -34,7 +34,7 @@ class HandleHttpRequestEvent
             return;
         }
 
-        app('nadi')->send(Entry::make(
+        $this->send(Entry::make(
             Type::HTTP, [
                 'title' => $title,
                 'description' => "$uri for $method request returned HTTP Status Code $status_code",

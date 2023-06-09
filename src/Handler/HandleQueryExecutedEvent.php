@@ -7,7 +7,7 @@ use CleaniqueCoders\NadiLaravel\Concerns\FetchesStackTrace;
 use CleaniqueCoders\NadiLaravel\Data\Entry;
 use Illuminate\Database\Events\QueryExecuted;
 
-class HandleQueryExecutedEvent
+class HandleQueryExecutedEvent extends Base
 {
     use FetchesStackTrace;
 
@@ -24,22 +24,21 @@ class HandleQueryExecutedEvent
         }
 
         if ($caller = $this->getCallerFromStackTrace()) {
-            app('nadi')
-                ->send(
-                    Entry::make(
-                        Type::QUERY, [
-                            'connection' => $event->connectionName,
-                            'bindings' => $event->bindings,
-                            'sql' => $this->replaceBindings($event),
-                            'time' => number_format($time, 2, '.', ''),
-                            'slow' => true,
-                            'file' => $caller['file'],
-                            'line' => $caller['line'],
-                        ])
-                        ->withFamilyHash($this->familyHash($event))
-                        ->tags($this->tags($event))
-                        ->toArray()
-                );
+            $this->send(
+                Entry::make(
+                    Type::QUERY, [
+                        'connection' => $event->connectionName,
+                        'bindings' => $event->bindings,
+                        'sql' => $this->replaceBindings($event),
+                        'time' => number_format($time, 2, '.', ''),
+                        'slow' => true,
+                        'file' => $caller['file'],
+                        'line' => $caller['line'],
+                    ])
+                    ->withFamilyHash($this->familyHash($event))
+                    ->tags($this->tags($event))
+                    ->toArray()
+            );
         }
     }
 

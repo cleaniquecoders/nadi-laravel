@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Notifications\Events\NotificationFailed;
 
-class HandleNotificationFailedEvent
+class HandleNotificationFailedEvent extends Base
 {
     /**
      * Record a new notification message was sent.
@@ -23,7 +23,7 @@ class HandleNotificationFailedEvent
         $notifiable = $this->formatNotifiable($event->notifiable);
         $is_queued = in_array(ShouldQueue::class, class_implements($event->notification));
 
-        $data = Entry::make(Type::NOTIFICATION, [
+        $this->send(Entry::make(Type::NOTIFICATION, [
             'notification' => $notification_class,
             'queued' => $is_queued,
             'notifiable' => $notifiable,
@@ -32,9 +32,7 @@ class HandleNotificationFailedEvent
         ])
             ->withFamilyHash(md5($notification_class.$notifiable))
             ->tags($this->tags($event))
-            ->toArray();
-
-        app('nadi')->send($data);
+            ->toArray());
     }
 
     /**
