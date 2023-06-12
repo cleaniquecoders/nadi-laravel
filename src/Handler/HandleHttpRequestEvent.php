@@ -51,8 +51,10 @@ class HandleHttpRequestEvent extends Base
                 'memory' => round(memory_get_peak_usage(true) / 1024 / 1025, 1),
             ]
         )->withFamilyHash(
-            md5($method.$status_code.$event->request->fullUrl())
-        )->toArray());
+            md5($method.$status_code.$event->request->fullUrl().date('Y-m-d'))
+        )->tags([
+            $method, $status_code,
+        ])->toArray());
     }
 
     /**

@@ -35,7 +35,7 @@ class HandleQueryExecutedEvent extends Base
                         'file' => $caller['file'],
                         'line' => $caller['line'],
                     ])
-                    ->withFamilyHash($this->familyHash($event))
+                    ->withFamilyHash(md5($event->sql.date('Y-m-d')))
                     ->tags($this->tags($event))
                     ->toArray()
             );
@@ -51,17 +51,6 @@ class HandleQueryExecutedEvent extends Base
     protected function tags($event)
     {
         return isset($this->options['slow']) && $event->time >= $this->options['slow'] ? ['slow'] : [];
-    }
-
-    /**
-     * Calculate the family look-up hash for the query event.
-     *
-     * @param  \Illuminate\Database\Events\QueryExecuted  $event
-     * @return string
-     */
-    public function familyHash($event)
-    {
-        return md5($event->sql);
     }
 
     /**

@@ -30,7 +30,7 @@ class HandleNotificationFailedEvent extends Base
             'channel' => $event->channel,
             'data' => $event->data,
         ])
-            ->withFamilyHash(md5($notification_class.$notifiable))
+            ->withFamilyHash(md5($notification_class.$notifiable.date('Y-m-d')))
             ->tags($this->tags($event))
             ->toArray());
     }
