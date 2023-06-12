@@ -55,9 +55,19 @@ class HandleFailedJobEvent extends Base
                     'line_preview' => ExceptionContext::get($event->exception),
                 ],
             ])
-            ->tags(array_merge($this->tags($payload), ['failed']))
-            ->withFamilyHash(data_get($content, 'data.batchId', null))
-            ->toArray());
+            ->tags(
+                array_merge($this->tags($payload), ['failed'])
+            )
+            ->setHashFamily(
+                $this->hash(
+                    Type::QUEUE.
+                    'failed'.
+                    $event->exception->getFile().
+                    $event->exception->getLine().
+                    $event->exception->getMessage().
+                    date('Y-m-d H')
+                )
+            )->toArray());
     }
 
     /**

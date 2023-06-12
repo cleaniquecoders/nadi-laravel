@@ -24,8 +24,8 @@ class HandleCommandEvent extends Base
                 'arguments' => $event->input->getArguments(),
                 'options' => $event->input->getOptions(),
             ]
-        )->withFamilyHash(
-            md5($command.$exitCode.date('Y-m-d'))
+        )->setHashFamily(
+            $this->hash($command.$exitCode.date('Y-m-d'))
         )->toArray());
     }
 

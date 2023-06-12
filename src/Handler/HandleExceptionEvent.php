@@ -42,10 +42,14 @@ class HandleExceptionEvent extends Base
                     'trace' => $trace,
                     'line_preview' => ExceptionContext::get($exception),
                 ]
-            )->withFamilyHash(
-                md5(get_class($exception).$exception->getFile().$exception->getLine().$exception->getMessage().date('Y-m-d'))
-            )->tags($this->tags($event))
-                ->toArray()
+            )->setHashFamily(
+                $this->hash(
+                    get_class($exception).
+                    $exception->getFile().
+                    $exception->getLine().
+                    $exception->getMessage().
+                    date('Y-m-d'))
+            )->tags($this->tags($event))->toArray()
         );
     }
 

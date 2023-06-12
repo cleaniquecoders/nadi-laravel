@@ -50,8 +50,8 @@ class HandleHttpRequestEvent extends Base
                 'duration' => $startTime ? floor((microtime(true) - $startTime) * 1000) : null,
                 'memory' => round(memory_get_peak_usage(true) / 1024 / 1025, 1),
             ]
-        )->withFamilyHash(
-            md5($method.$status_code.$event->request->fullUrl().date('Y-m-d'))
+        )->setHashFamily(
+            $this->hash($method.$status_code.$event->request->fullUrl().date('Y-m-d H'))
         )->tags([
             $method, $status_code,
         ])->toArray());

@@ -17,4 +17,9 @@ class Base
     {
         $this->transporter->send($data);
     }
+
+    public function hash($value)
+    {
+        return sha1($value);
+    }
 }

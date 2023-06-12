@@ -35,7 +35,7 @@ class HandleQueryExecutedEvent extends Base
                         'file' => $caller['file'],
                         'line' => $caller['line'],
                     ])
-                    ->withFamilyHash(md5($event->sql.date('Y-m-d')))
+                    ->setHashFamily($this->hash($event->sql.date('Y-m-d')))
                     ->tags($this->tags($event))
                     ->toArray()
             );
