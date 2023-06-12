@@ -2,6 +2,10 @@
 
 All notable changes to `cleaniquecoders/nadi-laravel` will be documented in this file.
 
+## 1.6.3 - 2023-06-12
+
+**Full Changelog**: https://github.com/cleaniquecoders/nadi-laravel/compare/1.6.2...1.6.3
+
 ## 1.6.2 - 2023-06-12
 
 **Full Changelog**: https://github.com/cleaniquecoders/nadi-laravel/compare/1.6.1...1.6.2
