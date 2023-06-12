@@ -5,6 +5,7 @@ namespace CleaniqueCoders\NadiLaravel\Handler;
 use CleaniqueCoders\Nadi\Data\Type;
 use CleaniqueCoders\NadiLaravel\Data\Entry;
 use Illuminate\Console\Events\CommandFinished;
+use Symfony\Component\Console\Command\Command;
 
 class HandleCommandEvent extends Base
 {
@@ -37,10 +38,6 @@ class HandleCommandEvent extends Base
      */
     private function shouldIgnore($event)
     {
-        return in_array($event->command, [
-            'schedule:run',
-            'schedule:finish',
-            'package:discover',
-        ]);
+        return $event->exitCode !== Command::FAILURE;
     }
 }
