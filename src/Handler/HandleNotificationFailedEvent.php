@@ -23,7 +23,7 @@ class HandleNotificationFailedEvent extends Base
         $notifiable = $this->formatNotifiable($event->notifiable);
         $is_queued = in_array(ShouldQueue::class, class_implements($event->notification));
 
-        $this->send(Entry::make(Type::NOTIFICATION, [
+        $this->store(Entry::make(Type::NOTIFICATION, [
             'notification' => $notification_class,
             'queued' => $is_queued,
             'notifiable' => $notifiable,

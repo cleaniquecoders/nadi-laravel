@@ -18,7 +18,7 @@ class HandleCommandEvent extends Base
         $command = $event->command ?? $event->input->getArguments()['command'] ?? 'default';
         $exitCode = $event->exitCode;
 
-        $this->send(Entry::make(
+        $this->store(Entry::make(
             Type::COMMAND, [
                 'command' => $command,
                 'exit_code' => $exitCode,

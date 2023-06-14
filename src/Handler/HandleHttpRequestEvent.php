@@ -34,7 +34,7 @@ class HandleHttpRequestEvent extends Base
             return;
         }
 
-        $this->send(Entry::make(
+        $this->store(Entry::make(
             Type::HTTP, [
                 'title' => $title,
                 'description' => "$uri for $method request returned HTTP Status Code $status_code",

@@ -13,9 +13,9 @@ class Base
         $this->transporter = app('nadi');
     }
 
-    public function send(array $data)
+    public function store(array $data)
     {
-        $this->transporter->send($data);
+        $this->transporter->store($data);
     }
 
     public function hash($value)

@@ -33,9 +33,14 @@ class Transporter
         return new self();
     }
 
-    public function send(array $data)
+    public function store(array $data)
     {
-        return $this->transporter->send($data);
+        return $this->transporter->store($data);
+    }
+
+    public function send()
+    {
+        return $this->transporter->send();
     }
 
     public function test()
@@ -46,5 +51,10 @@ class Transporter
     public function verify()
     {
         return $this->transporter->verify();
+    }
+
+    public function __destruct()
+    {
+        $this->transporter->send();
     }
 }

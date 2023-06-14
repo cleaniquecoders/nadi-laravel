@@ -43,7 +43,7 @@ class HandleFailedJobEvent extends Base
             $this->data($payload)
         );
 
-        $this->send(Entry::make(
+        $this->store(Entry::make(
             Type::QUEUE, [
                 'data' => $content,
                 'status' => 'failed',

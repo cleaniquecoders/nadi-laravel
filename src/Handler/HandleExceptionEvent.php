@@ -27,7 +27,7 @@ class HandleExceptionEvent extends Base
             return Arr::only($item, ['file', 'line']);
         })->toArray();
 
-        $this->send(
+        $this->store(
             ExceptionEntry::make(
                 $exception,
                 Type::EXCEPTION,

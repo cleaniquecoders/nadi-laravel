@@ -24,7 +24,7 @@ class HandleQueryExecutedEvent extends Base
         }
 
         if ($caller = $this->getCallerFromStackTrace()) {
-            $this->send(
+            $this->store(
                 Entry::make(
                     Type::QUERY, [
                         'connection' => $event->connectionName,
