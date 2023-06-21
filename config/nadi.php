@@ -20,7 +20,7 @@ return [
 
     'connections' => [
         'log' => [
-            'path' => storage_path('logs/'),
+            'path' => env('NADI_STORAGE_PATH', storage_path('nadi/')),
         ],
         'http' => [
             'key' => env('NADI_KEY'),
