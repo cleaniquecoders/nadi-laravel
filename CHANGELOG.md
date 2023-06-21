@@ -2,6 +2,12 @@
 
 All notable changes to `cleaniquecoders/nadi-laravel` will be documented in this file.
 
+## 1.7.1 - 2023-06-21
+
+- Allowed custom path for log
+
+**Full Changelog**: https://github.com/cleaniquecoders/nadi-laravel/compare/1.7.0...1.7.1
+
 ## 1.7.0 - 2023-06-14
 
 - Reduce request to Nadi API by storing issues in storage before sending to Nadi API.
