@@ -2,6 +2,14 @@
 
 All notable changes to `cleaniquecoders/nadi-laravel` will be documented in this file.
 
+## 1.8.0 - 2023-07-19
+
+### What's Changed
+
+- c0ee7c9 Lock to Nadi PHP 1.2
+
+**Full Changelog**: https://github.com/cleaniquecoders/nadi-laravel/compare/1.7.3...1.8.0
+
 ## 1.7.3 - 2023-07-19
 
 ### What's Changed
