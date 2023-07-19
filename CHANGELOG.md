@@ -2,6 +2,16 @@
 
 All notable changes to `cleaniquecoders/nadi-laravel` will be documented in this file.
 
+## 1.7.3 - 2023-07-19
+
+### What's Changed
+
+- 50e7833 Lock Require Nadi PHP 1.1*
+
+> This version will lock the requirement of Nadi PHP to version 1.1 only. Once the Nadi Collector is ready, a new release of Nadi Laravel will be published and locked to the Nadi PHP version 1.2
+
+**Full Changelog**: https://github.com/cleaniquecoders/nadi-laravel/compare/1.7.2...1.7.3
+
 ## 1.7.2 - 2023-07-15
 
 - Update .env Key used 2f7e340
