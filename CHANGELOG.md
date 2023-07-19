@@ -2,6 +2,12 @@
 
 All notable changes to `cleaniquecoders/nadi-laravel` will be documented in this file.
 
+## 1.7.2 - 2023-07-15
+
+- Update .env Key used 2f7e340
+
+**Full Changelog**: https://github.com/cleaniquecoders/nadi-laravel/compare/1.7.1...1.7.2
+
 ## 1.7.1 - 2023-06-21
 
 - Allowed custom path for log
